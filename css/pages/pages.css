@@ -1,0 +1,121 @@
+/* ==========================================================
+   pages.css — Composições específicas de cada página
+   (apenas o que não é reutilizável como componente)
+   ========================================================== */
+
+/* ---------- Início: Quem Somos ---------- */
+.about__media {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 4 / 3;
+}
+.about__media img { width: 100%; height: 100%; object-fit: cover; }
+.about__badge {
+    position: absolute;
+    left: var(--space-4);
+    bottom: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    font-size: var(--step--1);
+    color: var(--color-text-muted);
+}
+.about__badge strong { display: block; font-family: var(--font-display); font-size: var(--step-2); color: var(--color-text); line-height: 1.1; }
+
+.pillars { display: grid; gap: var(--space-4); margin-top: var(--space-6); }
+.pillar {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+}
+.pillar .card__icon { margin: 0; }
+.pillar h3 { font-size: var(--step-1); margin-bottom: var(--space-1); }
+.pillar p { color: var(--color-text-muted); }
+
+/* ---------- Faixa CTA com gradiente ---------- */
+.cta-band {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: grid;
+    gap: var(--space-5);
+    justify-items: center;
+    text-align: center;
+    padding: var(--space-8) var(--space-6);
+    border-radius: var(--radius-xl);
+    background: var(--gradient-brand);
+    color: #fff;
+    box-shadow: var(--shadow-lg);
+}
+.cta-band h2 { color: #fff; max-width: 20ch; }
+.cta-band p { color: rgb(255 255 255 / 0.85); max-width: 52ch; font-size: var(--step-1); }
+.cta-band::before,
+.cta-band::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(40px);
+}
+.cta-band::before { width: 22rem; height: 22rem; background: rgb(255 180 84 / 0.45); top: -8rem; right: -6rem; }
+.cta-band::after  { width: 18rem; height: 18rem; background: rgb(94 234 212 / 0.35); bottom: -8rem; left: -4rem; }
+.cta-band .btn { --btn-bg: #fff; --btn-fg: var(--brand-800); --btn-border: transparent; }
+.cta-band .btn--ghost { --btn-bg: rgb(255 255 255 / 0.12); --btn-fg: #fff; --btn-border: rgb(255 255 255 / 0.4); }
+.cta-band .btn:focus-visible { outline-color: #fff; }
+
+/* ---------- Redes sociais (antigo <aside>) ---------- */
+.social {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+}
+.social p { font-size: var(--step-1); max-width: 34ch; }
+.social__list { list-style: none; display: flex; gap: var(--space-2); }
+.social__link {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border-strong);
+    color: var(--color-text-muted);
+    transition: transform var(--dur-base) var(--ease-spring), color var(--dur-fast), background-color var(--dur-fast), border-color var(--dur-fast);
+}
+.social__link:hover { transform: translateY(-4px); color: var(--color-on-primary); background: var(--color-primary); border-color: transparent; }
+.social__link svg { width: 1.25rem; height: 1.25rem; }
+
+/* ---------- Contato ---------- */
+.contact-card { --card-pad: clamp(1.5rem, 1rem + 2.5vw, 2.5rem); }
+.channel-list { list-style: none; display: grid; gap: var(--space-3); margin-top: var(--space-5); }
+.channel {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+    text-decoration: none;
+    transition: border-color var(--dur-fast), transform var(--dur-base) var(--ease-out);
+}
+a.channel:hover { border-color: var(--color-primary); transform: translateX(4px); }
+.channel .card__icon { margin: 0; }
+.channel strong { display: block; }
+.channel span { font-size: 0.92rem; color: var(--color-text-muted); }
+
+.topics { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-5); }

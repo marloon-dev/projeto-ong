@@ -1,0 +1,64 @@
+/* ==========================================================
+   form.css — Campos com validação acessível
+   ========================================================== */
+
+.form { display: grid; gap: var(--space-5); }
+.form__row { display: grid; gap: var(--space-5); }
+@media (min-width: 40rem) { .form__row { grid-template-columns: 1fr 1fr; } }
+
+.field { display: grid; gap: var(--space-2); }
+
+.field__label {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+.field__label .req { color: var(--color-danger); margin-left: 2px; }
+
+.field__control {
+    width: 100%;
+    min-height: 3.125rem;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--color-border-strong);
+    background: var(--color-bg-elevated);
+    color: var(--color-text);
+    font-size: 1rem;
+    transition: border-color var(--dur-fast) var(--ease-out),
+                box-shadow var(--dur-fast) var(--ease-out),
+                background-color var(--dur-fast) var(--ease-out);
+}
+.field__control::placeholder { color: var(--color-text-subtle); }
+.field__control:hover { border-color: var(--color-text-subtle); }
+.field__control:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 4px var(--color-primary-ring); }
+
+textarea.field__control { min-height: 9rem; resize: vertical; line-height: 1.55; }
+
+select.field__control {
+    appearance: none;
+    padding-right: var(--space-7);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236b7d73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-4) center;
+}
+
+.field__control[aria-invalid="true"] { border-color: var(--color-danger); background: var(--color-danger-soft); }
+.field__control[aria-invalid="true"]:focus { box-shadow: 0 0 0 4px rgb(198 40 40 / 0.2); }
+
+.field__meta { display: flex; justify-content: space-between; gap: var(--space-3); min-height: 1.25rem; }
+
+.field__error {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-danger);
+    min-height: 1.3em; /* reserva espaço: evita saltos de layout (CLS) */
+}
+.field__error:not(:empty) { animation: shake 360ms var(--ease-out); }
+
+.field__count { margin-left: auto; font-size: 0.8rem; color: var(--color-text-subtle); font-variant-numeric: tabular-nums; }
+.field__count[data-warn="true"] { color: var(--accent-600); }
+
+.form__note { font-size: 0.85rem; color: var(--color-text-subtle); }

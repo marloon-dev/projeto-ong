@@ -1,0 +1,24 @@
+/* ==========================================================
+   estilos.css — Ponto de entrada do CSS
+   ONG Vidas em Ação
+
+   Arquitetura por camadas (@layer): a ordem abaixo define a
+   precedência, eliminando "guerras" de especificidade.
+   tokens → base → layout → components → pages → utilities
+   ========================================================== */
+
+@layer tokens, base, layout, components, pages, utilities;
+
+@import url("base/tokens.css")          layer(tokens);
+@import url("base/reset.css")           layer(base);
+@import url("base/typography.css")      layer(base);
+@import url("layout/layout.css")        layer(layout);
+@import url("layout/header.css")        layer(layout);
+@import url("layout/footer.css")        layer(layout);
+@import url("components/button.css")    layer(components);
+@import url("components/hero.css")      layer(components);
+@import url("components/card.css")      layer(components);
+@import url("components/form.css")      layer(components);
+@import url("components/overlay.css")   layer(components);
+@import url("pages/pages.css")          layer(pages);
+@import url("utilities/animations.css") layer(utilities);

@@ -1,0 +1,187 @@
+/* ==========================================================
+   card.css — Cartões (base, feature, projeto), chips e filtro
+   ========================================================== */
+
+.card {
+    --card-pad: var(--space-6);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--card-pad);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--dur-base) var(--ease-out),
+                box-shadow var(--dur-base) var(--ease-out),
+                border-color var(--dur-base) var(--ease-out);
+}
+.card p { color: var(--color-text-muted); }
+
+/* Elevação no hover apenas em dispositivos com ponteiro fino */
+@media (hover: hover) {
+    .card--interactive:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--color-border-strong);
+    }
+}
+
+/* Borda luminosa que segue o cursor (variáveis definidas em JS) */
+.card--glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), var(--color-primary), transparent 45%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--dur-base) var(--ease-out);
+    pointer-events: none;
+}
+.card--glow:hover::before { opacity: 1; }
+
+.card__icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-md);
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
+    transition: transform var(--dur-slow) var(--ease-spring);
+}
+.card__icon svg { width: 1.5rem; height: 1.5rem; }
+.card:hover .card__icon { transform: rotate(-8deg) scale(1.08); }
+
+.card__link {
+    margin-top: auto;
+    padding-top: var(--space-3);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+.card__link svg { width: 1em; height: 1em; transition: transform var(--dur-base) var(--ease-spring); }
+.card__link:hover svg { transform: translateX(4px); }
+/* Torna todo o cartão clicável sem aninhar links */
+.card__link--stretched::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+
+/* ---------- Cartão de projeto ---------- */
+.project-card { --card-pad: 0; overflow: hidden; gap: 0; }
+.project-card__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--color-surface-muted);
+}
+.project-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 900ms var(--ease-out), opacity var(--dur-slow) var(--ease-out);
+}
+@media (hover: hover) {
+    .project-card:hover .project-card__media img { transform: scale(1.06); }
+}
+.project-card__body { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-5) var(--space-5) var(--space-6); flex: 1; }
+
+.project-card__facts {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: auto;
+    padding-top: var(--space-4);
+    border-top: 1px dashed var(--color-border-strong);
+}
+.project-card__facts div { display: grid; grid-template-columns: auto 1fr; gap: var(--space-3); align-items: start; }
+.project-card__facts dt {
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--color-text);
+    min-width: 7.5rem;
+}
+.project-card__facts dd { font-size: 0.95rem; color: var(--color-text-muted); }
+
+/* ---------- Tag / chip ---------- */
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    width: fit-content;
+}
+.project-card .tag {
+    position: absolute;
+    top: var(--space-4);
+    left: var(--space-4);
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    color: var(--color-text);
+}
+
+/* ---------- Filtro (segmented control) ---------- */
+.filter {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-1);
+    padding: var(--space-1);
+    border-radius: var(--radius-full);
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
+    margin-bottom: var(--space-6);
+}
+.filter__btn {
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    transition: background-color var(--dur-base) var(--ease-out), color var(--dur-fast), box-shadow var(--dur-base);
+}
+.filter__btn:hover { color: var(--color-text); }
+.filter__btn[aria-pressed="true"] {
+    background: var(--color-bg-elevated);
+    color: var(--color-text);
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Itens filtrados: saída/entrada suave */
+[data-filter-item] { transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
+[data-filter-item][data-leaving="true"] { opacity: 0; transform: scale(0.96); }
+[data-filter-item][hidden] { display: none; }
+
+/* ---------- Skeleton (imagens a carregar) ---------- */
+.skeleton { position: relative; }
+.skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 20%, rgb(255 255 255 / 0.35) 50%, transparent 80%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
+}
+:root[data-theme="dark"] .skeleton::after { background-image: linear-gradient(100deg, transparent 20%, rgb(255 255 255 / 0.06) 50%, transparent 80%); }
+.skeleton img { opacity: 0; }
+
+/* Lista de projetos: colunas de largura estável e centradas,
+   para que 1 resultado filtrado não ocupe a largura toda */
+.grid--projects {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 23rem));
+    justify-content: center;
+}

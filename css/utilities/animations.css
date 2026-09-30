@@ -1,0 +1,72 @@
+/* ==========================================================
+   animations.css — Keyframes, reveal on scroll, transições de página
+   Regra de ouro: animar apenas transform e opacity (composited → 60 FPS).
+   ========================================================== */
+
+@keyframes fade-in   { from { opacity: 0; } }
+@keyframes fade-out  { to   { opacity: 0; } }
+@keyframes spin      { to   { transform: rotate(360deg); } }
+@keyframes float     { 50%  { transform: translateY(-12px); } }
+@keyframes drift {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(6vmax, 4vmax, 0) scale(1.1); }
+    100% { transform: translate3d(-4vmax, 7vmax, 0) scale(0.95); }
+}
+@keyframes shimmer   { from { background-position: 150% 0; } to { background-position: -50% 0; } }
+@keyframes shake     { 20%, 60% { transform: translateX(-4px); } 40%, 80% { transform: translateX(4px); } }
+@keyframes modal-in  { from { opacity: 0; transform: translateY(24px) scale(0.96); } }
+@keyframes modal-out { to   { opacity: 0; transform: translateY(12px) scale(0.98); } }
+@keyframes toast-in  { from { opacity: 0; transform: translateY(24px) scale(0.95); } }
+@keyframes toast-out { to   { opacity: 0; transform: translateY(12px) scale(0.97); } }
+@keyframes page-in   { from { opacity: 0; transform: translateY(12px); } }
+
+/* ---------- Reveal on scroll ----------
+   Só esconde se o JS estiver ativo (classe .js no <html>),
+   assim o conteúdo nunca fica invisível sem JavaScript.
+   Usa as propriedades individuais `translate`/`scale` (e não `transform`)
+   para não colidir com os efeitos de hover dos componentes. */
+@media (prefers-reduced-motion: no-preference) {
+    .js [data-reveal] {
+        opacity: 0;
+        translate: 0 28px;
+        transition: opacity var(--dur-reveal) var(--ease-out),
+                    translate var(--dur-reveal) var(--ease-out),
+                    scale var(--dur-reveal) var(--ease-out),
+                    transform var(--dur-base) var(--ease-out),
+                    box-shadow var(--dur-base) var(--ease-out),
+                    border-color var(--dur-base) var(--ease-out);
+    }
+    .js [data-reveal]:not(.is-visible) { transition-delay: 0s; }
+    .js [data-reveal].is-visible { transition-delay: calc(var(--i, 0) * 90ms), calc(var(--i, 0) * 90ms), calc(var(--i, 0) * 90ms), 0s, 0s, 0s; }
+    .js [data-reveal="left"]  { translate: -32px 0; }
+    .js [data-reveal="right"] { translate: 32px 0; }
+    .js [data-reveal="scale"] { translate: 0 0; scale: 0.94; }
+    .js [data-reveal].is-visible { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+/* Entrada da página quando o browser não suporta View Transitions */
+@supports not (view-transition-name: none) {
+    @media (prefers-reduced-motion: no-preference) {
+        main { animation: page-in var(--dur-slow) var(--ease-out) both; }
+    }
+}
+
+/* ---------- Transições entre páginas (View Transitions API, MPA) ----------
+   Suportado em Chromium/Safari recentes; ignorado de forma segura noutros. */
+@view-transition { navigation: auto; }
+
+.site-header { view-transition-name: site-header; }
+
+::view-transition-old(root) { animation: 220ms var(--ease-out) both fade-out; }
+::view-transition-new(root) { animation: 420ms var(--ease-out) both page-in; }
+
+/* ---------- Movimento reduzido: desliga tudo o que é não essencial ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

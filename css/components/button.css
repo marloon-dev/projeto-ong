@@ -1,0 +1,136 @@
+/* ==========================================================
+   button.css — Botões, botão de tema, voltar ao topo
+   ========================================================== */
+
+.btn {
+    --btn-bg: var(--color-surface-solid);
+    --btn-fg: var(--color-text);
+    --btn-border: var(--color-border-strong);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 3rem;
+    padding: 0 var(--space-5);
+    border: 1px solid var(--btn-border);
+    border-radius: var(--radius-full);
+    background: var(--btn-bg);
+    color: var(--btn-fg);
+    font-weight: 600;
+    font-size: 0.975rem;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform var(--dur-fast) var(--ease-out),
+                box-shadow var(--dur-base) var(--ease-out),
+                background-color var(--dur-fast) var(--ease-out),
+                border-color var(--dur-fast) var(--ease-out);
+    will-change: transform;
+}
+
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--color-primary); }
+.btn:active { transform: translateY(0) scale(0.98); transition-duration: 80ms; }
+
+.btn svg { width: 1.1em; height: 1.1em; flex-shrink: 0; transition: transform var(--dur-base) var(--ease-spring); }
+.btn:hover svg { transform: translateX(3px); }
+
+/* Primário com brilho que atravessa no hover */
+.btn--primary {
+    --btn-bg: var(--color-primary);
+    --btn-fg: var(--color-on-primary);
+    --btn-border: transparent;
+    box-shadow: var(--shadow-sm);
+}
+.btn--primary:hover { --btn-bg: var(--color-primary-hover); box-shadow: var(--shadow-glow); border-color: transparent; }
+.btn--primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.35) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 700ms var(--ease-out);
+}
+.btn--primary:hover::after { transform: translateX(120%); }
+
+.btn--ghost { --btn-bg: transparent; }
+.btn--sm { min-height: 2.5rem; padding: 0 var(--space-4); font-size: 0.9rem; }
+.btn--lg { min-height: 3.5rem; padding: 0 var(--space-6); font-size: var(--step-0); }
+.btn--block { width: 100%; }
+
+/* Estado de carregamento */
+.btn[aria-busy="true"] { pointer-events: none; color: transparent; }
+.btn[aria-busy="true"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    border: 2px solid var(--btn-fg);
+    border-right-color: transparent;
+    animation: spin 700ms linear infinite;
+}
+
+/* ---------- Botão de ícone (tema, fechar, etc.) ---------- */
+.icon-btn {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-full);
+    color: var(--color-text-muted);
+    transition: background-color var(--dur-fast) var(--ease-out),
+                color var(--dur-fast) var(--ease-out),
+                transform var(--dur-fast) var(--ease-out);
+}
+.icon-btn:hover { background: var(--color-primary-soft); color: var(--color-text); }
+.icon-btn:active { transform: scale(0.92); }
+.icon-btn svg { width: 1.25rem; height: 1.25rem; }
+
+/* Alternância sol/lua com rotação */
+.theme-toggle svg {
+    position: absolute;
+    transition: transform var(--dur-slow) var(--ease-spring), opacity var(--dur-base) var(--ease-out);
+}
+.theme-toggle .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+:root[data-theme="dark"] .theme-toggle .icon-sun  { opacity: 0; transform: rotate(90deg) scale(0.5); }
+:root[data-theme="dark"] .theme-toggle .icon-moon { opacity: 1; transform: none; }
+
+/* ---------- Voltar ao topo ---------- */
+.back-to-top {
+    position: fixed;
+    right: var(--gutter);
+    bottom: var(--gutter);
+    z-index: var(--z-header);
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--color-border-strong);
+    color: var(--color-text);
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transform: translateY(1rem) scale(0.9);
+    pointer-events: none;
+    transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-spring);
+}
+.back-to-top[data-visible="true"] { opacity: 1; transform: none; pointer-events: auto; }
+.back-to-top:hover { transform: translateY(-3px); }
+.back-to-top svg { width: 1.25rem; height: 1.25rem; }
+
+/* CTA do cabeçalho: escondido em ecrãs estreitos (fica no menu/modal).
+   Vive na camada components para prevalecer sobre .btn { display } */
+@media (max-width: 52rem) {
+    .site-header__cta { display: none; }
+}

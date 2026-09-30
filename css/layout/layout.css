@@ -1,0 +1,49 @@
+/* ==========================================================
+   layout.css — Primitivas de layout (container, secções, grelhas)
+   ========================================================== */
+
+.container {
+    width: min(100% - 2 * var(--gutter), var(--container));
+    margin-inline: auto;
+}
+.container--narrow { width: min(100% - 2 * var(--gutter), var(--container-narrow)); }
+
+.section { padding-block: var(--space-8); position: relative; }
+.section--tight { padding-block: var(--space-7); }
+.section--muted {
+    background: var(--color-surface-muted);
+    border-block: 1px solid var(--color-border);
+}
+
+.section__header {
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-7);
+    max-width: 44rem;
+}
+.section__header--center { text-align: center; margin-inline: auto; justify-items: center; }
+.section__header p { color: var(--color-text-muted); font-size: var(--step-1); line-height: 1.55; }
+
+/* Grelha auto-responsiva: sem media queries */
+.grid {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--grid-min, 18rem)), 1fr));
+}
+.grid--2 { --grid-min: 22rem; }
+.grid--3 { --grid-min: 17rem; }
+.grid--4 { --grid-min: 13rem; }
+
+.split {
+    display: grid;
+    gap: var(--space-7);
+    align-items: start;
+}
+@media (min-width: 56rem) {
+    .split { grid-template-columns: 1fr 1.15fr; }
+    .split--reverse { grid-template-columns: 1.15fr 1fr; }
+}
+
+.stack > * + * { margin-top: var(--stack-gap, var(--space-4)); }
+
+.cluster { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }

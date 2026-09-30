@@ -19,6 +19,8 @@
 @keyframes toast-in  { from { opacity: 0; transform: translateY(24px) scale(0.95); } }
 @keyframes toast-out { to   { opacity: 0; transform: translateY(12px) scale(0.97); } }
 @keyframes page-in   { from { opacity: 0; transform: translateY(12px); } }
+@keyframes lightbox-in { from { opacity: 0; transform: scale(0.97); } }
+@keyframes pulse-ring { from { opacity: 1; transform: scale(0.9); } to { opacity: 0; transform: scale(1.35); } }
 
 /* ---------- Reveal on scroll ----------
    Só esconde se o JS estiver ativo (classe .js no <html>),

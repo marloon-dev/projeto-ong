@@ -20,7 +20,7 @@
     };
 
     const init = () => {
-        const { $$ } = VEA.utils;
+        const { $, $$ } = VEA.utils;
 
         $$('[data-dialog-open]').forEach((trigger) => {
             const id = /** @type {HTMLElement} */ (trigger).dataset.dialogOpen;
@@ -29,8 +29,13 @@
 
             trigger.addEventListener('click', () => {
                 dialog.showModal();
-                // devolve o foco ao botão que abriu
-                dialog.addEventListener('close', () => /** @type {HTMLElement} */ (trigger).focus(), { once: true });
+                // devolve o foco ao botão que abriu (ou ao menu, se o botão
+                // estava na gaveta móvel, que entretanto fechou)
+                dialog.addEventListener('close', () => {
+                    const el = /** @type {HTMLElement} */ (trigger);
+                    const target = el.closest('[data-nav-list]') ? $('[data-nav-toggle]') : el;
+                    /** @type {HTMLElement | null} */ (target)?.focus();
+                }, { once: true });
             });
         });
 

@@ -15,6 +15,7 @@ test.describe('Navegação e estrutura', () => {
         ['index.html', /Transformando vidas/],
         ['projetos.html', /Projetos Sociais/],
         ['contato.html', /Nossa Equipe/],
+        ['galeria.html', /Galeria/],
     ]) {
         test(`${path} carrega sem erros de JavaScript`, async ({ page }) => {
             const erros = [];
@@ -66,6 +67,68 @@ test('filtro de projetos mostra apenas a categoria escolhida', async ({ page }) 
     await expect(page.locator('[data-filter-status]')).toHaveText('1 projeto encontrado');
     await page.getByRole('button', { name: 'Todos' }).click();
     await expect(page.locator('[data-filter-item]:visible')).toHaveCount(3);
+});
+
+test.describe('Galeria', () => {
+    test('está no menu principal de todas as páginas', async ({ page }) => {
+        for (const path of ['index.html', 'projetos.html', 'contato.html']) {
+            await page.goto(`/html/${path}`);
+            await expect(page.locator('#menu-principal a[href="galeria.html"]')).toHaveCount(1);
+        }
+    });
+
+    test('filtra fotos e vídeos', async ({ page }) => {
+        await page.goto('/html/galeria.html');
+        await page.getByRole('button', { name: 'Vídeos', exact: true }).click();
+        await expect(page.locator('[data-filter-item]:visible')).toHaveCount(3);
+        await expect(page.locator('[data-filter-status]')).toHaveText('3 itens encontrados');
+        await page.getByRole('button', { name: 'Fotos', exact: true }).click();
+        await expect(page.locator('[data-filter-item]:visible')).toHaveCount(6);
+    });
+
+    test('abre o visualizador, navega com as setas e devolve o foco ao fechar', async ({ page }) => {
+        await page.goto('/html/galeria.html');
+        const primeiro = page.locator('[data-lightbox-item]').first();
+        await primeiro.click();
+        const lightbox = page.locator('[data-lightbox]');
+        await expect(lightbox).toBeVisible();
+        await expect(page.locator('[data-lightbox-count]')).toHaveText('1 de 9');
+        await expect(page.locator('[data-lightbox-title]')).toHaveText('Festa comunitária de fim de ano');
+        await page.keyboard.press('ArrowRight');
+        await expect(page.locator('[data-lightbox-count]')).toHaveText('2 de 9');
+        await expect(lightbox.getByText('Vídeo disponível em breve')).toBeVisible();
+        await page.keyboard.press('ArrowLeft');
+        await page.keyboard.press('ArrowLeft');
+        await expect(page.locator('[data-lightbox-count]')).toHaveText('9 de 9');
+        await page.keyboard.press('Escape');
+        await expect(lightbox).toBeHidden();
+        await expect(primeiro).toBeFocused();
+    });
+
+    test('o visualizador percorre apenas os itens filtrados', async ({ page }) => {
+        await page.goto('/html/galeria.html');
+        await page.getByRole('button', { name: 'Fotos', exact: true }).click();
+        await page.locator('[data-lightbox-item]:visible').first().click();
+        await expect(page.locator('[data-lightbox-count]')).toHaveText('1 de 6');
+    });
+});
+
+test('menu móvel tem o botão "Quero ajudar" e fecha ao abri-lo', async ({ page, isMobile }) => {
+    test.skip(!isMobile, 'Apenas em mobile');
+    await page.goto('/html/index.html');
+    const toggle = page.locator('[data-nav-toggle]');
+    await toggle.click();
+    await page.locator('.nav__cta button').click();
+    await expect(page.getByRole('dialog', { name: 'Como quer ajudar?' })).toBeVisible();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+});
+
+test('links da gaveta móvel são clicáveis', async ({ page, isMobile }) => {
+    test.skip(!isMobile, 'Apenas em mobile');
+    await page.goto('/html/index.html');
+    await page.locator('[data-nav-toggle]').click();
+    await page.locator('#menu-principal a[href="galeria.html"]').click();
+    await expect(page).toHaveURL(/galeria\.html$/);
 });
 
 test.describe('Formulário de contato', () => {

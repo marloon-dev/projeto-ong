@@ -20,5 +20,6 @@
 @import url("components/card.css")      layer(components);
 @import url("components/form.css")      layer(components);
 @import url("components/overlay.css")   layer(components);
+@import url("components/gallery.css")   layer(components);
 @import url("pages/pages.css")          layer(pages);
 @import url("utilities/animations.css") layer(utilities);

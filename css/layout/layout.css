@@ -10,6 +10,7 @@
 
 .section { padding-block: var(--space-8); position: relative; }
 .section--tight { padding-block: var(--space-7); }
+.section--flush-top { padding-top: 0; }
 .section--muted {
     background: var(--color-surface-muted);
     border-block: 1px solid var(--color-border);
@@ -21,6 +22,7 @@
     margin-bottom: var(--space-7);
     max-width: 44rem;
 }
+.section__header--flush { margin-bottom: 0; }
 .section__header--center { text-align: center; margin-inline: auto; justify-items: center; }
 .section__header p { color: var(--color-text-muted); font-size: var(--step-1); line-height: 1.55; }
 
@@ -47,3 +49,18 @@
 .stack > * + * { margin-top: var(--stack-gap, var(--space-4)); }
 
 .cluster { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+.cluster--center { justify-content: center; }
+
+/* Cabeçalho de secção com ação à direita (ex.: "Ver galeria completa") */
+.section__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-7);
+}
+.section__top .section__header { margin-bottom: 0; }
+
+/* Barra de filtros centrada */
+.filter-bar { display: flex; flex-direction: column; align-items: center; }

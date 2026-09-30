@@ -39,7 +39,10 @@
             requestAnimationFrame(() => requestAnimationFrame(() => entering.forEach((el) => el.removeAttribute('data-leaving'))));
 
             const count = items.filter(match).length;
-            if (status) status.textContent = `${count} ${count === 1 ? 'projeto encontrado' : 'projetos encontrados'}`;
+            if (status) {
+                const { singular = 'projeto encontrado', plural = 'projetos encontrados' } = /** @type {HTMLElement} */ (status).dataset;
+                status.textContent = `${count} ${count === 1 ? singular : plural}`;
+            }
             busy = false;
         };
 

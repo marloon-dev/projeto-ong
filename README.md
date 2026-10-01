@@ -1,6 +1,7 @@
 # ONG Vidas em Ação — Site institucional
 
-![versão](https://img.shields.io/badge/versão-1.0.0-0b8a51)
+![versão](https://img.shields.io/badge/versão-1.1.0-0b8a51)
+[![CI](https://github.com/marloon-dev/projeto-ong/actions/workflows/ci.yml/badge.svg)](https://github.com/marloon-dev/projeto-ong/actions/workflows/ci.yml)
 ![stack](https://img.shields.io/badge/stack-HTML%20·%20CSS%20·%20JS-0e9f8e)
 ![testes](https://img.shields.io/badge/testes-Playwright-2ead33)
 
@@ -120,7 +121,8 @@ npm run test:ui      # abre a interface interativa do Playwright
 npm run test:report  # abre o relatório HTML da última execução
 ```
 
-O Playwright arranca automaticamente o servidor local (`npm start`) antes dos testes. A suite
+O Playwright arranca automaticamente o servidor local (`npm start`) antes dos testes. No GitHub, o
+workflow [`ci.yml`](.github/workflows/ci.yml) corre a mesma suite em cada pull request e em cada push para `main`. A suite
 em `tests/e2e/site.spec.js` cobre:
 
 | Cenário | O que valida |
@@ -232,4 +234,4 @@ Nenhum componente de interface precisa de ser alterado.
 ## Autoria e licença
 
 Desenvolvido por **Marlon** ([@marloon-dev](https://github.com/marloon-dev)).
-© 2026 ONG Vidas em Ação. Todos os direitos reservados.
+© 2026 ONG Vidas em Ação. Todos os direitos reservados. Ver [`LICENSE`](LICENSE).

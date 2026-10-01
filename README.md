@@ -1,6 +1,7 @@
 # ONG Vidas em Ação — Site institucional
 
 ![versão](https://img.shields.io/badge/versão-1.1.0-0b8a51)
+[![Site](https://img.shields.io/badge/site-GitHub%20Pages-0e9f8e)](https://marloon-dev.github.io/projeto-ong/)
 [![CI](https://github.com/marloon-dev/projeto-ong/actions/workflows/ci.yml/badge.svg)](https://github.com/marloon-dev/projeto-ong/actions/workflows/ci.yml)
 ![stack](https://img.shields.io/badge/stack-HTML%20·%20CSS%20·%20JS-0e9f8e)
 ![testes](https://img.shields.io/badge/testes-Playwright-2ead33)
@@ -110,8 +111,9 @@ Não existe etapa de build: o código-fonte é o próprio artefacto publicado. P
 copiar a raiz do projeto (exceto `node_modules/`, `tests/` e os relatórios de testes) para
 qualquer alojamento estático.
 
-**GitHub Pages:** em *Settings → Pages*, escolha a branch `main` e a pasta `/ (root)`.
-O site fica disponível em `https://marloon-dev.github.io/projeto-ong/html/index.html`.
+**GitHub Pages:** publicado a partir da branch `main`, pasta `/ (root)`, em
+<https://marloon-dev.github.io/projeto-ong/>. O `index.html` da raiz redireciona para
+`html/index.html` e o `.nojekyll` desliga o processamento Jekyll (o site é servido tal como está).
 
 ## Testes
 

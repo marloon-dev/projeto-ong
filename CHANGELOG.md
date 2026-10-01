@@ -9,6 +9,9 @@ seguem os [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.
 ## [Unreleased]
 
 ### Adicionado
+- Página Galeria (`galeria.html`) com fotos e vídeos, filtro por tipo e link no menu de todas as páginas.
+- Visualizador (lightbox) com setas do teclado, gesto de deslizar, navegação só entre os itens filtrados e vídeos carregados apenas ao abrir.
+- `.gitignore` para `node_modules/`, relatórios do Playwright e `.DS_Store`.
 - Testes end-to-end com Playwright (desktop e mobile) e scripts `npm start`, `npm test`, `npm run test:ui`.
 - README completo: pré-requisitos, instalação, execução, publicação, testes e fluxo de contribuição.
 

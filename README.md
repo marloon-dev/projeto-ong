@@ -36,6 +36,7 @@ voluntariado, doações e parcerias.
 |---|---|
 | `html/index.html` | Hero, números de impacto, Quem Somos (missão e valores), projetos em destaque, como ajudar, redes sociais |
 | `html/projetos.html` | Lista de projetos com filtro por área (Educação, Assistência, Saúde), público-alvo e resultados |
+| `html/galeria.html` | Fotos e vídeos das ações, com filtro por tipo e visualizador (lightbox) |
 | `html/contato.html` | Canais de atendimento e formulário de contato com validação acessível |
 
 O projeto foi pensado para funcionar **sem etapa de build**: os ficheiros podem ser abertos
@@ -48,6 +49,7 @@ diretamente no browser ou servidos por qualquer servidor estático.
 - Animações de **entrada ao fazer scroll**, **contadores** e **transições entre páginas** (View Transitions API).
 - **Modal "Quero ajudar"** (`<dialog>` nativo) com atalhos para doação, voluntariado e parcerias.
 - **Filtro animado** de projetos com anúncio do resultado para leitores de ecrã.
+- **Galeria** de fotos e vídeos com visualizador (lightbox): setas do teclado, gesto de deslizar, navegação só entre os itens filtrados e vídeos carregados apenas ao abrir.
 - **Formulário de contato** com validação inline, contador de caracteres, assunto pré-preenchido via URL e notificações (toasts).
 - **Skeletons** enquanto as imagens carregam e botão **voltar ao topo**.
 
@@ -123,11 +125,12 @@ em `tests/e2e/site.spec.js` cobre:
 
 | Cenário | O que valida |
 |---|---|
-| Carregamento das 3 páginas | Título principal, link ativo no menu e ausência de erros de JavaScript |
+| Carregamento das 4 páginas | Título principal, link ativo no menu e ausência de erros de JavaScript |
 | Tema | Alternância claro/escuro e persistência após recarregar |
 | Menu móvel | Abertura, fecho com Esc e devolução do foco (apenas no projeto `mobile`) |
 | Modal | Abertura e fecho do diálogo "Quero ajudar" |
 | Filtro | Número de projetos visíveis e mensagem anunciada |
+| Galeria | Link no menu de todas as páginas, filtro fotos/vídeos, visualizador (setas, Esc, devolução do foco) e navegação só entre itens filtrados |
 | Formulário | Erros com `aria-invalid`, foco no 1.º campo inválido, assunto via URL e envio com sucesso |
 
 ## Estrutura do projeto
@@ -137,19 +140,20 @@ projeto-ong/
 ├── html/                    Páginas (HTML semântico e acessível)
 │   ├── index.html
 │   ├── projetos.html
+│   ├── galeria.html
 │   └── contato.html
 ├── css/
 │   ├── estilos.css          Ponto de entrada — @layer + @import
 │   ├── base/                tokens.css (design system), reset.css, typography.css
 │   ├── layout/              layout.css (container, grid, split), header.css, footer.css
-│   ├── components/          button, hero, card, form, overlay (modal + toast)
+│   ├── components/          button, hero, card, form, overlay (modal + toast), gallery (grelha + lightbox)
 │   ├── pages/               pages.css (composições específicas)
 │   └── utilities/           animations.css (keyframes, reveal, view transitions)
 ├── js/
 │   ├── core/utils.js        Helpers partilhados ($, $$, rafThrottle…)
 │   ├── services/            contact-service.js (camada de dados / API)
 │   ├── modules/             theme, header, nav, reveal, counter, card-glow,
-│   │                        images, toast, dialog, filter, form
+│   │                        images, toast, dialog, lightbox, filter, form
 │   └── scripts.js           Bootstrap: inicia cada módulo isoladamente
 ├── imagens/                 logo.svg + ilustrações SVG
 ├── tests/e2e/               Testes end-to-end (Playwright)
@@ -187,6 +191,7 @@ projeto-ong/
 | `data-dialog-open="id"` / `data-dialog-close` | Abre/fecha um `<dialog class="modal">` |
 | `data-filter` + `data-filter-value` / `data-filter-item data-category` | Filtro com animação |
 | `data-theme-toggle` | Botão claro/escuro |
+| `data-lightbox-item data-type="image\|video\|youtube"` + `data-title` / `data-meta` | Abre o item no `<dialog data-lightbox>` (vídeo: `data-src`; YouTube: `data-video-id`) |
 | `class="card--glow"` | Borda luminosa que segue o cursor |
 | `class="skeleton"` | Shimmer enquanto a imagem carrega |
 

@@ -8,7 +8,7 @@ Site institucional estático da ONG "Vidas em Ação": HTML, CSS e JavaScript pu
 
 ```bash
 npm install && npx playwright install chromium   # 1.ª vez (Node >= 18)
-npm start                    # serve . na porta 4173 → http://localhost:4173/html/index.html
+npm start                    # serve . na porta 4173 → http://localhost:4173/
 npm test                     # Playwright, projetos "desktop" e "mobile" (arranca o servidor sozinho)
 npx playwright test -g "filtra fotos"            # um teste pelo nome
 npx playwright test --project=mobile             # só um projeto
@@ -23,7 +23,7 @@ Não há linter nem compilador. Os ficheiros JS têm `// @ts-check` + JSDoc: a v
 - **Não usar ES Modules** (`import`/`export`): o site tem de funcionar também via `file://`. Cada ficheiro é uma IIFE `(function (VEA) { … })(window.VEA)` que regista `VEA.<nome> = { init, … }`.
 - `js/core/utils.js` cria `window.VEA` e `VEA.utils` (`$`, `$$`, `rafThrottle`, `afterAnimation`, `prefersReducedMotion`, `wait`) — tem de ser carregado primeiro.
 - `js/scripts.js` é o bootstrap: percorre a lista `MODULES` e chama `init()` de cada um dentro de `try/catch`. Um módulo só atua se encontrar os seus `data-*` na página.
-- **Adicionar um módulo exige três passos:** criar `js/modules/<nome>.js`, acrescentar o `<script defer>` antes de `scripts.js` em **todas** as páginas `html/*.html` (a lista é idêntica em todas) e adicionar o nome em `MODULES` no `scripts.js` (a ordem importa).
+- **Adicionar um módulo exige três passos:** criar `js/modules/<nome>.js`, acrescentar o `<script defer>` antes de `scripts.js` em **todas** as páginas `*.html` da raiz (a lista é idêntica em todas) e adicionar o nome em `MODULES` no `scripts.js` (a ordem importa).
 - Módulos comunicam através do namespace (ex.: `lightbox` usa `VEA.dialog.close`, e respeita itens escondidos pelo `filter` via `[hidden]`/`[data-leaving]`).
 - `js/services/contact-service.js` isola o envio do formulário; por omissão é simulado. Para um backend real, define-se `ENDPOINT` nesse ficheiro sem tocar na UI.
 
@@ -33,8 +33,9 @@ Não há linter nem compilador. Os ficheiros JS têm `// @ts-check` + JSDoc: a v
 - Design tokens em `css/base/tokens.css`; o tema escuro só redefine os tokens semânticos `--color-*` sob `[data-theme="dark"]`. Nomenclatura estilo BEM (`.card__icon`, `.btn--primary`).
 
 ### Páginas HTML
-- `html/index.html`, `projetos.html`, `galeria.html`, `contato.html` partilham cabeçalho, rodapé, modal "Quero ajudar" e lista de scripts **duplicados em cada ficheiro** (não há templates) — alterações comuns têm de ser replicadas nas quatro.
-- Cada `<head>` tem um script inline que aplica o tema (`localStorage` chave `vea-theme`) e a classe `js` antes da pintura, para evitar flash; `theme.js` assume isso.
+- As páginas ficam na **raiz** (`index.html`, `projetos.html`, `galeria.html`, `contato.html`) e usam caminhos relativos (`css/…`, `js/…`, `imagens/…`). `html/*.html` são apenas redirecionamentos dos endereços antigos — não editar conteúdo aí.
+- As páginas partilham cabeçalho, rodapé, modal "Quero ajudar" e lista de scripts **duplicados em cada ficheiro** (não há templates) — alterações comuns têm de ser replicadas nas quatro.
+- Cada `<head>` tem meta tags Open Graph com URLs **absolutas** do GitHub Pages (`og:url`, `og:image`, `canonical`) — atualizar se o domínio mudar. Tem também um script inline que aplica o tema (`localStorage` chave `vea-theme`) e a classe `js` antes da pintura, para evitar flash; `theme.js` assume isso.
 - O comportamento é ligado por atributos `data-*` (`data-reveal`, `data-count`, `data-dialog-open`, `data-filter`/`data-filter-item`, `data-lightbox-item`, `data-theme-toggle`…); a tabela completa está no README. Sem JS, todo o conteúdo tem de continuar visível e os links funcionais.
 - Acessibilidade é requisito testado: `aria-current` no menu, `aria-expanded`/focus trap no menu móvel, `<dialog>` nativo com devolução de foco, `aria-invalid`/`aria-describedby` no formulário, regiões `aria-live`, `prefers-reduced-motion`. Animações só com `transform`/`opacity`.
 

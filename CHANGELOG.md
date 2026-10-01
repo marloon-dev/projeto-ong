@@ -8,6 +8,14 @@ seguem os [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-10-01
+
+### Alterado
+- **Endereços limpos:** as páginas passaram de `html/` para a raiz do site (ex.: `/projeto-ong/contato.html`). Os endereços antigos em `html/` continuam a funcionar e redirecionam, mantendo a query string.
+
+### Adicionado
+- Pré-visualização do link (Open Graph e Twitter Card) em todas as páginas, com imagem `imagens/og-image.jpg` de 1200×630, `og:url` e `canonical`.
+
 ## [1.2.0] - 2026-10-01
 
 ### Adicionado
@@ -86,7 +94,8 @@ seguem os [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.
 ### Adicionado
 - Estrutura inicial do site: páginas Início, Projetos Sociais e Contato em HTML semântico.
 
-[Unreleased]: https://github.com/marloon-dev/projeto-ong/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/marloon-dev/projeto-ong/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/marloon-dev/projeto-ong/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/marloon-dev/projeto-ong/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/marloon-dev/projeto-ong/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/marloon-dev/projeto-ong/releases/tag/v1.0.0

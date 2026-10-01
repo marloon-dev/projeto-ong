@@ -20,7 +20,7 @@ test.describe('Navegação e estrutura', () => {
         test(`${path} carrega sem erros de JavaScript`, async ({ page }) => {
             const erros = [];
             page.on('pageerror', (e) => erros.push(e.message));
-            await page.goto(`/html/${path}`);
+            await page.goto(`/${path}`);
             await expect(page.getByRole('heading', { level: 1 })).toHaveText(titulo);
             await expect(page.locator('.nav__link[aria-current="page"]')).toHaveCount(1);
             expect(erros).toEqual([]);
@@ -29,7 +29,7 @@ test.describe('Navegação e estrutura', () => {
 });
 
 test('alterna o tema e guarda a escolha', async ({ page }) => {
-    await page.goto('/html/index.html');
+    await page.goto('/index.html');
     const html = page.locator('html');
     const inicial = await html.getAttribute('data-theme');
     await page.locator('[data-theme-toggle]').click();
@@ -41,7 +41,7 @@ test('alterna o tema e guarda a escolha', async ({ page }) => {
 
 test('menu móvel abre, fecha com Esc e devolve o foco', async ({ page, isMobile }) => {
     test.skip(!isMobile, 'Apenas em mobile');
-    await page.goto('/html/index.html');
+    await page.goto('/index.html');
     const toggle = page.locator('[data-nav-toggle]');
     await toggle.click();
     await expect(toggle).toHaveAttribute('aria-expanded', 'true');
@@ -52,7 +52,7 @@ test('menu móvel abre, fecha com Esc e devolve o foco', async ({ page, isMobile
 });
 
 test('modal "Quero ajudar" abre e fecha', async ({ page }) => {
-    await page.goto('/html/index.html');
+    await page.goto('/index.html');
     await page.locator('[data-dialog-open="dialogo-ajudar"]:visible').first().click();
     const dialog = page.getByRole('dialog', { name: 'Como quer ajudar?' });
     await expect(dialog).toBeVisible();
@@ -61,7 +61,7 @@ test('modal "Quero ajudar" abre e fecha', async ({ page }) => {
 });
 
 test('filtro de projetos mostra apenas a categoria escolhida', async ({ page }) => {
-    await page.goto('/html/projetos.html');
+    await page.goto('/projetos.html');
     await page.getByRole('button', { name: 'Saúde' }).click();
     await expect(page.locator('[data-filter-item]:visible')).toHaveCount(1);
     await expect(page.locator('[data-filter-status]')).toHaveText('1 projeto encontrado');
@@ -72,13 +72,13 @@ test('filtro de projetos mostra apenas a categoria escolhida', async ({ page }) 
 test.describe('Galeria', () => {
     test('está no menu principal de todas as páginas', async ({ page }) => {
         for (const path of ['index.html', 'projetos.html', 'contato.html']) {
-            await page.goto(`/html/${path}`);
+            await page.goto(`/${path}`);
             await expect(page.locator('#menu-principal a[href="galeria.html"]')).toHaveCount(1);
         }
     });
 
     test('filtra fotos e vídeos', async ({ page }) => {
-        await page.goto('/html/galeria.html');
+        await page.goto('/galeria.html');
         await page.getByRole('button', { name: 'Vídeos', exact: true }).click();
         await expect(page.locator('[data-filter-item]:visible')).toHaveCount(3);
         await expect(page.locator('[data-filter-status]')).toHaveText('3 itens encontrados');
@@ -87,7 +87,7 @@ test.describe('Galeria', () => {
     });
 
     test('abre o visualizador, navega com as setas e devolve o foco ao fechar', async ({ page }) => {
-        await page.goto('/html/galeria.html');
+        await page.goto('/galeria.html');
         const primeiro = page.locator('[data-lightbox-item]').first();
         await primeiro.click();
         const lightbox = page.locator('[data-lightbox]');
@@ -106,7 +106,7 @@ test.describe('Galeria', () => {
     });
 
     test('o visualizador percorre apenas os itens filtrados', async ({ page }) => {
-        await page.goto('/html/galeria.html');
+        await page.goto('/galeria.html');
         await page.getByRole('button', { name: 'Fotos', exact: true }).click();
         await page.locator('[data-lightbox-item]:visible').first().click();
         await expect(page.locator('[data-lightbox-count]')).toHaveText('1 de 6');
@@ -115,7 +115,7 @@ test.describe('Galeria', () => {
 
 test('menu móvel tem o botão "Quero ajudar" e fecha ao abri-lo', async ({ page, isMobile }) => {
     test.skip(!isMobile, 'Apenas em mobile');
-    await page.goto('/html/index.html');
+    await page.goto('/index.html');
     const toggle = page.locator('[data-nav-toggle]');
     await toggle.click();
     await page.locator('.nav__cta button').click();
@@ -125,7 +125,7 @@ test('menu móvel tem o botão "Quero ajudar" e fecha ao abri-lo', async ({ page
 
 test('links da gaveta móvel são clicáveis', async ({ page, isMobile }) => {
     test.skip(!isMobile, 'Apenas em mobile');
-    await page.goto('/html/index.html');
+    await page.goto('/index.html');
     await page.locator('[data-nav-toggle]').click();
     await page.locator('#menu-principal a[href="galeria.html"]').click();
     await expect(page).toHaveURL(/galeria\.html$/);
@@ -133,7 +133,7 @@ test('links da gaveta móvel são clicáveis', async ({ page, isMobile }) => {
 
 test.describe('Formulário de contato', () => {
     test('assinala campos inválidos de forma acessível', async ({ page }) => {
-        await page.goto('/html/contato.html');
+        await page.goto('/contato.html');
         await page.getByLabel('E-mail').fill('abc');
         await page.getByRole('button', { name: /Enviar mensagem/ }).click();
         await expect(page.getByLabel('Nome')).toHaveAttribute('aria-invalid', 'true');
@@ -142,7 +142,7 @@ test.describe('Formulário de contato', () => {
     });
 
     test('pré-seleciona o assunto pela URL e envia com sucesso', async ({ page }) => {
-        await page.goto('/html/contato.html?assunto=voluntariado');
+        await page.goto('/contato.html?assunto=voluntariado');
         await expect(page.locator('#assunto')).toHaveValue('voluntariado');
         await page.getByLabel('Nome').fill('Maria Silva');
         await page.getByLabel('E-mail').fill('maria@exemplo.com');
@@ -151,4 +151,11 @@ test.describe('Formulário de contato', () => {
         await expect(page.getByRole('status').filter({ hasText: 'Mensagem enviada!' })).toBeVisible();
         await expect(page.getByLabel('Nome')).toHaveValue('');
     });
+});
+
+test('endereços antigos em /html/ redirecionam e mantêm a query string', async ({ page }) => {
+    await page.goto('/html/contato.html?assunto=voluntariado');
+    await expect(page).toHaveURL(/\/contato\.html\?assunto=voluntariado$/);
+    await page.goto('/html/index.html');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Transformando vidas/);
 });

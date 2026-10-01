@@ -36,10 +36,10 @@ voluntariado, doações e parcerias.
 
 | Página | Conteúdo |
 |---|---|
-| `html/index.html` | Hero, números de impacto, Quem Somos (missão e valores), projetos em destaque, como ajudar, redes sociais |
-| `html/projetos.html` | Lista de projetos com filtro por área (Educação, Assistência, Saúde), público-alvo e resultados |
-| `html/galeria.html` | Fotos e vídeos das ações, com filtro por tipo e visualizador (lightbox) |
-| `html/contato.html` | Canais de atendimento e formulário de contato com validação acessível |
+| `index.html` | Hero, números de impacto, Quem Somos (missão e valores), projetos em destaque, como ajudar, redes sociais |
+| `projetos.html` | Lista de projetos com filtro por área (Educação, Assistência, Saúde), público-alvo e resultados |
+| `galeria.html` | Fotos e vídeos das ações, com filtro por tipo e visualizador (lightbox) |
+| `contato.html` | Canais de atendimento e formulário de contato com validação acessível |
 
 O projeto foi pensado para funcionar **sem etapa de build**: os ficheiros podem ser abertos
 diretamente no browser ou servidos por qualquer servidor estático.
@@ -97,11 +97,11 @@ servidor local e para os testes.
 npm start
 ```
 
-Abra <http://localhost:4173/html/index.html>.
+Abra <http://localhost:4173/>.
 
 Alternativas sem Node.js:
 
-- abrir `html/index.html` diretamente no browser;
+- abrir `index.html` diretamente no browser;
 - usar a extensão **Live Server** do VS Code;
 - `python3 -m http.server 4173` na raiz do projeto.
 
@@ -112,8 +112,10 @@ copiar a raiz do projeto (exceto `node_modules/`, `tests/` e os relatórios de t
 qualquer alojamento estático.
 
 **GitHub Pages:** publicado a partir da branch `main`, pasta `/ (root)`, em
-<https://marloon-dev.github.io/projeto-ong/>. O `index.html` da raiz redireciona para
-`html/index.html` e o `.nojekyll` desliga o processamento Jekyll (o site é servido tal como está).
+<https://marloon-dev.github.io/projeto-ong/>. As páginas ficam na raiz, para endereços limpos; os
+ficheiros em `html/` só redirecionam os endereços antigos (até à v1.2.0). O `.nojekyll` desliga o
+processamento Jekyll, e cada página tem meta tags Open Graph com `imagens/og-image.jpg` (1200×630)
+para a pré-visualização do link no WhatsApp, redes sociais e e-mail.
 
 ## Testes
 
@@ -141,11 +143,11 @@ em `tests/e2e/site.spec.js` cobre:
 
 ```
 projeto-ong/
-├── html/                    Páginas (HTML semântico e acessível)
-│   ├── index.html
-│   ├── projetos.html
-│   ├── galeria.html
-│   └── contato.html
+├── index.html               Páginas (HTML semântico e acessível)
+├── projetos.html
+├── galeria.html
+├── contato.html
+├── html/                    Redirecionamentos dos endereços antigos
 ├── css/
 │   ├── estilos.css          Ponto de entrada — @layer + @import
 │   ├── base/                tokens.css (design system), reset.css, typography.css
@@ -159,7 +161,7 @@ projeto-ong/
 │   ├── modules/             theme, header, nav, reveal, counter, card-glow,
 │   │                        images, toast, dialog, lightbox, filter, form
 │   └── scripts.js           Bootstrap: inicia cada módulo isoladamente
-├── imagens/                 logo.svg + ilustrações SVG
+├── imagens/                 logo.svg, ilustrações SVG e og-image.jpg (pré-visualização do link)
 ├── tests/e2e/               Testes end-to-end (Playwright)
 ├── playwright.config.js     Configuração dos testes (desktop + mobile, servidor local)
 ├── serve.json               Configuração do servidor estático

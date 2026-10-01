@@ -8,6 +8,12 @@ seguem os [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.
 
 ## [Unreleased]
 
+### Alterado
+- **Endereços limpos:** as páginas passaram de `html/` para a raiz do site (ex.: `/projeto-ong/contato.html`). Os endereços antigos em `html/` continuam a funcionar e redirecionam, mantendo a query string.
+
+### Adicionado
+- Pré-visualização do link (Open Graph e Twitter Card) em todas as páginas, com imagem `imagens/og-image.jpg` de 1200×630, `og:url` e `canonical`.
+
 ## [1.2.0] - 2026-10-01
 
 ### Adicionado

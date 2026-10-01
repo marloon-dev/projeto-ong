@@ -46,4 +46,4 @@ Toda a suite está em `tests/e2e/site.spec.js`. Cada página deve ter um único 
 
 - Conventional Commits (`feat`, `fix`, `docs`, `test`, `refactor`, `chore`…) e SemVer com tags `vX.Y.Z`; registar alterações em `CHANGELOG.md` (Keep a Changelog, secção `[Unreleased]`).
 - Branches a partir de `main` (`feat/…`, `fix/…`, `docs/…`); `npm test` deve passar antes do PR.
-- Não existe `.gitignore`: `node_modules/`, `test-results/` e `.DS_Store` estão versionados — evitar incluir alterações nesses caminhos nos commits.
+- `node_modules/`, relatórios do Playwright (`test-results/`, `playwright-report/`) e `.DS_Store` estão no `.gitignore` e não devem ser versionados.

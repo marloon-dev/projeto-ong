@@ -1,0 +1,11 @@
+# Dependências
+node_modules/
+
+# Resultados do Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Sistema
+.DS_Store

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONG Vidas em Ação - Galeria</title>
+    <meta name="description" content="Fotos e vídeos das ações da ONG Vidas em Ação: oficinas, distribuição de alimentos, mutirões e festas comunitárias.">
+    <meta name="theme-color" content="#f7faf8">
+    <meta property="og:title" content="ONG Vidas em Ação - Galeria">
+    <meta property="og:description" content="Fotos e vídeos das ações da ONG Vidas em Ação: oficinas, distribuição de alimentos, mutirões e festas comunitárias.">
+    <link rel="icon" href="../imagens/logo.svg" type="image/svg+xml">
+
+    <!-- Aplica o tema antes da pintura (evita "flash" de tema errado) -->
+    <script>
+        (function () {
+            var d = document.documentElement, t = null;
+            d.classList.add('js');
+            try { t = localStorage.getItem('vea-theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            d.dataset.theme = t;
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&amp;family=Inter:wght@400..700&amp;display=swap">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head><body>
+    <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+
+    <header class="site-header" data-header>
+        <div class="container site-header__inner">
+            <a class="brand" href="index.html">
+                <img src="../imagens/logo.svg" alt="Logotipo da ONG Vidas em Ação" width="40" height="40">
+                <span>Vidas em Ação</span>
+            </a>
+
+            <nav class="nav" aria-label="Navegação principal" data-nav>
+                <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu-principal" data-nav-toggle>
+                    <span class="sr-only">Abrir menu</span>
+                    <span class="nav__burger" aria-hidden="true"></span>
+                </button>
+                <ul class="nav__list" id="menu-principal" role="list" data-nav-list>
+                    <li><a class="nav__link" href="index.html">Início</a></li>
+                    <li><a class="nav__link" href="projetos.html">Projetos Sociais</a></li>
+                    <li><a class="nav__link" href="galeria.html" aria-current="page">Galeria</a></li>
+                    <li><a class="nav__link" href="contato.html">Contato</a></li>
+                    <li class="nav__cta"><button class="btn btn--primary" type="button" data-dialog-open="dialogo-ajudar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg> Quero ajudar</button></li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <button class="icon-btn theme-toggle" type="button" aria-label="Ativar tema escuro" aria-pressed="false" data-theme-toggle>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+                </button>
+                <button class="btn btn--primary btn--sm site-header__cta" type="button" data-dialog-open="dialogo-ajudar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg> Quero ajudar
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="conteudo" tabindex="-1">
+
+        <section class="page-hero" aria-labelledby="pagina-titulo">
+            <div class="blobs" aria-hidden="true">
+                <span class="blob blob--1"></span>
+                <span class="blob blob--2"></span>
+                <span class="blob blob--3"></span>
+            </div>
+            <div class="container">
+                <span class="eyebrow" data-reveal>Momentos que inspiram</span>
+                <h1 id="pagina-titulo" data-reveal style="--i:1">Nossa <span class="text-gradient">Galeria</span></h1>
+                <p class="lead" data-reveal style="--i:2">
+                    Fotos e vídeos das oficinas, distribuições, mutirões e encontros que
+                    construímos junto com as comunidades.
+                </p>
+            </div>
+        </section>
+
+        <section class="section section--flush-top" aria-labelledby="galeria-titulo">
+            <div class="container">
+                <h2 class="sr-only" id="galeria-titulo">Fotos e vídeos</h2>
+
+                <div class="filter-bar">
+                    <div class="filter" role="group" aria-label="Filtrar galeria por tipo" data-filter>
+                        <button class="filter__btn" type="button" aria-pressed="true" data-filter-value="todos">Todos</button>
+                        <button class="filter__btn" type="button" aria-pressed="false" data-filter-value="fotos">Fotos</button>
+                        <button class="filter__btn" type="button" aria-pressed="false" data-filter-value="videos">Vídeos</button>
+                    </div>
+                    <p class="sr-only" role="status" data-filter-status data-singular="item encontrado" data-plural="itens encontrados"></p>
+                </div>
+
+                <!-- Para adicionar uma foto: copie um <li> com data-category="fotos" e troque a imagem e os textos.
+                     Para um vídeo do YouTube: preencha data-video-id com o ID do vídeo (o trecho depois de "v=")
+                     e aponte o href para o endereço do vídeo. Sem ID, o visualizador mostra "Vídeo disponível em breve".
+                     Para um ficheiro de vídeo próprio: use data-type="video" data-src="../videos/nome.mp4". -->
+                <ul class="gallery" role="list" data-reveal-group>
+                    <li class="gallery__item gallery__item--featured" data-filter-item data-category="fotos" data-reveal>
+                        <a class="gallery__link skeleton" href="../imagens/galeria-festa.svg" data-lightbox-item data-type="image" data-title="Festa comunitária de fim de ano" data-meta="Dezembro de 2025 · Comunidade Jardim Esperança">
+                            <img src="../imagens/galeria-festa.svg" alt="Crianças e famílias a celebrar com bandeirinhas coloridas" width="800" height="600" loading="lazy">
+                            <span class="gallery__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg> Foto</span>
+                            <span class="gallery__overlay"><span class="gallery__title">Festa comunitária de fim de ano</span><span class="gallery__meta">Dezembro de 2025 · Comunidade Jardim Esperança</span></span>
+                        </a>
+                    </li>
+                    <li class="gallery__item" data-filter-item data-category="videos" data-reveal>
+                        <a class="gallery__link skeleton" href="https://www.youtube.com/" data-lightbox-item data-type="youtube" data-video-id="" data-title="Bastidores da oficina de programação" data-meta="Vídeo · Educação Digital" aria-label="Ver vídeo: Bastidores da oficina de programação">
+                            <img src="../imagens/projeto-educacao-digital.svg" alt="" width="800" height="500" loading="lazy">
+                            <span class="gallery__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m16 13 5.2 3.5a.5.5 0 0 0 .8-.4V7.9a.5.5 0 0 0-.8-.4L16 11"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg> Vídeo</span>
+                            <span class="gallery__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5Z"/></svg></span>
+                            <span class="gallery__overlay"><span class="gallery__title">Bastidores da oficina de programação</span><span class="gallery__meta">Vídeo · Educação Digital</span></span>
+                        </a>
+                    </li>
+                    <li class="gallery__item" data-filter-item data-category="fotos" data-reveal>
+                        <a class="gallery__link skeleton" href="../imagens/galeria-horta.svg" data-lightbox-item data-type="image" data-title="Mutirão na horta comunitária" data-meta="Março de 2026 · Voluntários e moradores">
+                            <img src="../imagens/galeria-horta.svg" alt="Voluntários a plantar mudas na horta comunitária" width="800" height="600" loading="lazy">
+                            <span class="gallery__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg> Foto</span>
+                            <span class="gallery__overlay"><span class="gallery__title">Mutirão na horta comunitária</span><span class="gallery__meta">Março de 2026 · Voluntários e moradores</span></span>
+                        </a>
+                    </li>
+                    <li class="gallery__item" data-filter-item data-category="fotos" data-reveal>
+                        <a class="gallery__link skeleton" href="../imagens/projeto-alimentacao.svg" data-lightbox-item data-type="image" data-title="Distribuição semanal de cestas" data-meta="Alimentação Solidária">
+                            <img src="../imagens/projeto-alimentacao.svg" alt="Voluntários a organizar cestas básicas" width="800" height="500" loading="lazy">
+                            <span class="gallery__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg> Foto</span>
+                            <span class="gallery__overlay"><span class="gallery__title">Distribuição semanal de cestas</span><span class="gallery__meta">Alimentação Solidária</span></span>
+                        </a>
+                    </li>
+                    <li class="gallery__item" data-filter-item data-category="videos" data-reveal>
+                        <a class="gallery__link skeleton" href="https://www.youtube.com/" data-lightbox-item data-type="youtube" data-video-id="" data-title="Um dia com os nossos voluntários" data-meta="Vídeo · Voluntariado" aria-label="Ver vídeo: Um dia com os nossos voluntários">
+                            <img src="../imagens/galeria-voluntarios.svg" alt="" width="800" height="600" loading="lazy">
+                            <span class="gallery__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m16 13 5.2 3.5a.5.5 0 0 0 .8-.4V7.9a.5.5 0 0 0-.8-.4L16 11"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg> Vídeo</span>
+                            <span class="gallery__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5Z"/></svg></span>
+                            <span class="gallery__overlay"><span class="gallery__title">Um dia com os nossos voluntários</span><span class="gallery__meta">Vídeo · Voluntariado</span></span>
+                        </a>
+                    </li>
+                    <li class="gallery__item" data-filter-item data-category="fotos" data-reveal>
+                        <a class="gallery__link skeleton" href="../imagens/galeria-arte.svg" data-lightbox-item data-type="image" data-title="Oficina de arte para crianças" data-meta="Abril de 2026 · Educação">
+                            <img src="../imagens/galeria-arte.svg" alt="Crianças a pintar quadros numa oficina de arte" width="800" height="600" loading="lazy">
+                            <span class="gallery__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg> Foto</span>
+                            <span class="gallery__overlay"><span class="gallery__title">Oficina de arte para crianças</span><span class="gallery__meta">Abril de 2026 · Educação</span></span>
+                        </a>
+                    </li>
+                    <li class="gallery__item" data-filter-item data-category="fotos" data-reveal>
+                        <a class="gallery__link skeleton" href="../imagens/projeto-reabilitacao.svg" data-lightbox-item data-type="image" data-title="Atendimento de fisioterapia comunitária" data-meta="Reabilitação e Bem-Estar">
+                            <img src="../imagens/projeto-reabilitacao.svg" alt="Sessão de fisioterapia com um idoso" width="800" height="500" loading="lazy">
+                            <span class="gallery__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg> Foto</span>
+                            <span class="gallery__overlay"><span class="gallery__title">Atendimento de fisioterapia comunitária</span><span class="gallery__meta">Reabilitação e Bem-Estar</span></span>
+                        </a>
+                    </li>
+                    <li class="gallery__item" data-filter-item data-category="videos" data-reveal>
+                        <a class="gallery__link skeleton" href="https://www.youtube.com/" data-lightbox-item data-type="youtube" data-video-id="" data-title="Depoimento: famílias atendidas" data-meta="Vídeo · Comunidade" aria-label="Ver vídeo: Depoimento: famílias atendidas">
+                            <img src="../imagens/hero-comunidade.svg" alt="" width="600" height="600" loading="lazy">
+                            <span class="gallery__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m16 13 5.2 3.5a.5.5 0 0 0 .8-.4V7.9a.5.5 0 0 0-.8-.4L16 11"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg> Vídeo</span>
+                            <span class="gallery__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5Z"/></svg></span>
+                            <span class="gallery__overlay"><span class="gallery__title">Depoimento: famílias atendidas</span><span class="gallery__meta">Vídeo · Comunidade</span></span>
+                        </a>
+                    </li>
+                    <li class="gallery__item" data-filter-item data-category="fotos" data-reveal>
+                        <a class="gallery__link skeleton" href="../imagens/sobre-nos.svg" data-lightbox-item data-type="image" data-title="A nossa equipa reunida" data-meta="Encontro anual de voluntários">
+                            <img src="../imagens/sobre-nos.svg" alt="Equipa de voluntários da ONG reunida" width="800" height="600" loading="lazy">
+                            <span class="gallery__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg> Foto</span>
+                            <span class="gallery__overlay"><span class="gallery__title">A nossa equipa reunida</span><span class="gallery__meta">Encontro anual de voluntários</span></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section section--flush-top" aria-labelledby="cta-titulo">
+            <div class="container">
+                <div class="cta-band" data-reveal="scale">
+                    <h2 id="cta-titulo">Quer aparecer na próxima foto?</h2>
+                    <p>Junte-se às nossas ações como voluntário ou apoie os projetos que fazem estes momentos acontecer.</p>
+                    <div class="cluster cluster--center">
+                        <button class="btn btn--lg" type="button" data-dialog-open="dialogo-ajudar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg> Quero ajudar</button>
+                        <a class="btn btn--ghost btn--lg" href="projetos.html">Ver projetos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="site-footer__grid">
+                <div class="stack" style="--stack-gap: var(--space-3)">
+                    <a class="brand" href="index.html">
+                        <img src="../imagens/logo.svg" alt="" width="40" height="40">
+                        <span>Vidas em Ação</span>
+                    </a>
+                    <p>Educação, inclusão social e apoio a comunidades em situação de vulnerabilidade.</p>
+                </div>
+                <nav aria-label="Rodapé">
+                    <h2 class="site-footer__title">Navegação</h2>
+                    <ul role="list">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="projetos.html">Projetos Sociais</a></li>
+                        <li><a href="galeria.html">Galeria</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <h2 class="site-footer__title">Contato</h2>
+                    <ul role="list">
+                        <li><a href="mailto:contato@vidasemacao.org">contato@vidasemacao.org</a></li>
+                        <li><a href="contato.html?assunto=voluntariado">Seja voluntário</a></li>
+                        <li><a href="contato.html?assunto=parceria">Parcerias</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-footer__bottom">
+                <p>&copy; 2026 ONG Vidas em Ação. Todos os direitos reservados.</p>
+                <p>Feito com cuidado e acessibilidade.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" type="button" aria-label="Voltar ao topo" data-back-to-top>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+    </button>
+
+    <!-- Modal "Quero ajudar" (reutilizado em todas as páginas) -->
+    <dialog class="modal" id="dialogo-ajudar" aria-labelledby="dialogo-ajudar-titulo">
+        <div class="modal__inner">
+            <div class="modal__header">
+                <div>
+                    <span class="eyebrow">Faça parte</span>
+                    <h2 id="dialogo-ajudar-titulo">Como quer ajudar?</h2>
+                </div>
+                <button class="icon-btn modal__close" type="button" aria-label="Fechar" data-dialog-close>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <p class="muted">Escolha uma forma de contribuir e fale diretamente com a nossa equipe.</p>
+            <ul class="option-list" role="list">
+                <li>
+                    <a class="option" href="contato.html?assunto=doacao">
+                        <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span>
+                        <span><strong>Fazer uma doação</strong><span>Apoie financeiramente ou com alimentos.</span></span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="option" href="contato.html?assunto=voluntariado">
+                        <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.9-3.9a3 3 0 0 0-4.2 0l-.9.9a1 1 0 1 1-3-3l2.8-2.8a5.8 5.8 0 0 1 7.1-.9l.5.3a2 2 0 0 0 1.4.3L21 4"/><path d="m21 3 1 11h-2M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3M3 4h8"/></svg></span>
+                        <span><strong>Ser voluntário</strong><span>Doe o seu tempo e talento aos projetos.</span></span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="option" href="contato.html?assunto=parceria">
+                        <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></span>
+                        <span><strong>Parceria institucional</strong><span>Empresas e instituições que querem somar.</span></span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </dialog>
+
+    <!-- Visualizador de fotos e vídeos -->
+    <dialog class="modal lightbox" aria-labelledby="lightbox-titulo" data-lightbox>
+        <div class="lightbox__inner">
+            <div class="lightbox__bar">
+                <span class="lightbox__count" aria-live="polite" data-lightbox-count></span>
+                <button class="icon-btn" type="button" aria-label="Fechar" data-dialog-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="lightbox__stage">
+                <button class="icon-btn lightbox__nav lightbox__nav--prev" type="button" aria-label="Anterior" data-lightbox-prev><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button>
+                <div class="lightbox__media" data-lightbox-media></div>
+                <button class="icon-btn lightbox__nav lightbox__nav--next" type="button" aria-label="Seguinte" data-lightbox-next><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button>
+            </div>
+            <div class="lightbox__caption">
+                <strong id="lightbox-titulo" data-lightbox-title></strong>
+                <span data-lightbox-meta></span>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Scripts: núcleo → serviços → módulos → bootstrap (ordem garantida por defer) -->
+    <script src="../js/core/utils.js" defer></script>
+    <script src="../js/services/contact-service.js" defer></script>
+    <script src="../js/modules/theme.js" defer></script>
+    <script src="../js/modules/header.js" defer></script>
+    <script src="../js/modules/nav.js" defer></script>
+    <script src="../js/modules/reveal.js" defer></script>
+    <script src="../js/modules/counter.js" defer></script>
+    <script src="../js/modules/card-glow.js" defer></script>
+    <script src="../js/modules/images.js" defer></script>
+    <script src="../js/modules/toast.js" defer></script>
+    <script src="../js/modules/dialog.js" defer></script>
+    <script src="../js/modules/lightbox.js" defer></script>
+    <script src="../js/modules/filter.js" defer></script>
+    <script src="../js/modules/form.js" defer></script>
+    <script src="../js/scripts.js" defer></script>
+</body>
+</html>

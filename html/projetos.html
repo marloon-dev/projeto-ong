@@ -43,7 +43,9 @@
                 <ul class="nav__list" id="menu-principal" role="list" data-nav-list>
                     <li><a class="nav__link" href="index.html">Início</a></li>
                     <li><a class="nav__link" href="projetos.html" aria-current="page">Projetos Sociais</a></li>
+                    <li><a class="nav__link" href="galeria.html">Galeria</a></li>
                     <li><a class="nav__link" href="contato.html">Contato</a></li>
+                    <li class="nav__cta"><button class="btn btn--primary" type="button" data-dialog-open="dialogo-ajudar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg> Quero ajudar</button></li>
                 </ul>
             </nav>
 
@@ -77,13 +79,13 @@
             </div>
         </section>
 
-        <section class="section" id="lista-projetos" aria-labelledby="lista-titulo" style="padding-top: 0">
+        <section class="section section--flush-top" id="lista-projetos" aria-labelledby="lista-titulo">
             <div class="container">
                 <div class="section__header section__header--center" style="margin-bottom: var(--space-5)">
                     <h2 id="lista-titulo">Projetos em Andamento</h2>
                 </div>
 
-                <div style="display:flex; flex-direction:column; align-items:center">
+                <div class="filter-bar">
                     <div class="filter" role="group" aria-label="Filtrar projetos por área" data-filter>
                         <button class="filter__btn" type="button" aria-pressed="true" data-filter-value="todos">Todos</button>
                         <button class="filter__btn" type="button" aria-pressed="false" data-filter-value="educacao">Educação</button>
@@ -140,12 +142,12 @@
             </div>
         </section>
 
-        <section class="section" style="padding-top: 0" aria-labelledby="cta-titulo">
+        <section class="section section--flush-top" aria-labelledby="cta-titulo">
             <div class="container">
                 <div class="cta-band" data-reveal="scale">
                     <h2 id="cta-titulo">Quer apoiar um destes projetos?</h2>
                     <p>Cada doação, hora de voluntariado ou parceria multiplica o alcance do nosso trabalho.</p>
-                    <div class="cluster" style="justify-content:center">
+                    <div class="cluster cluster--center">
                         <button class="btn btn--lg" type="button" data-dialog-open="dialogo-ajudar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg> Quero ajudar</button>
                         <a class="btn btn--ghost btn--lg" href="contato.html">Fale conosco</a>
                     </div>
@@ -170,6 +172,7 @@
                     <ul role="list">
                         <li><a href="index.html">Início</a></li>
                         <li><a href="projetos.html">Projetos Sociais</a></li>
+                        <li><a href="galeria.html">Galeria</a></li>
                         <li><a href="contato.html">Contato</a></li>
                     </ul>
                 </nav>
@@ -244,6 +247,7 @@
     <script src="../js/modules/images.js" defer></script>
     <script src="../js/modules/toast.js" defer></script>
     <script src="../js/modules/dialog.js" defer></script>
+    <script src="../js/modules/lightbox.js" defer></script>
     <script src="../js/modules/filter.js" defer></script>
     <script src="../js/modules/form.js" defer></script>
     <script src="../js/scripts.js" defer></script>

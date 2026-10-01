@@ -43,7 +43,9 @@
                 <ul class="nav__list" id="menu-principal" role="list" data-nav-list>
                     <li><a class="nav__link" href="index.html" aria-current="page">Início</a></li>
                     <li><a class="nav__link" href="projetos.html">Projetos Sociais</a></li>
+                    <li><a class="nav__link" href="galeria.html">Galeria</a></li>
                     <li><a class="nav__link" href="contato.html">Contato</a></li>
+                    <li class="nav__cta"><button class="btn btn--primary" type="button" data-dialog-open="dialogo-ajudar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg> Quero ajudar</button></li>
                 </ul>
             </nav>
 
@@ -131,7 +133,7 @@
                     <div class="about__badge"><strong>10+ anos</strong>transformando realidades</div>
                 </div>
                 <div>
-                    <div class="section__header" style="margin-bottom: 0" data-reveal>
+                    <div class="section__header section__header--flush" data-reveal>
                         <span class="eyebrow">Sobre nós</span>
                         <h2 id="quem-somos-titulo">Quem Somos</h2>
                         <p>
@@ -202,7 +204,53 @@
             </div>
         </section>
 
-        <section class="section" id="como-ajudar" aria-labelledby="como-ajudar-titulo">
+        <section class="section" id="momentos" aria-labelledby="momentos-titulo">
+            <div class="container">
+                <div class="section__top">
+                    <div class="section__header" data-reveal>
+                        <span class="eyebrow">Galeria</span>
+                        <h2 id="momentos-titulo">Momentos que Inspiram</h2>
+                        <p>Um pouco do dia a dia dos projetos, em fotos e vídeos.</p>
+                    </div>
+                    <a class="btn btn--ghost" href="galeria.html" data-reveal>Ver galeria completa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+                <ul class="gallery gallery--preview" role="list" data-reveal-group>
+                    <li class="gallery__item gallery__item--featured" data-reveal>
+                        <a class="gallery__link skeleton" href="galeria.html">
+                            <img src="../imagens/galeria-festa.svg" alt="" width="800" height="600" loading="lazy">
+                            <span class="gallery__overlay"><span class="gallery__title">Festa comunitária de fim de ano</span><span class="gallery__meta">Dezembro de 2025</span></span>
+                        </a>
+                    </li>
+                    <li class="gallery__item" data-reveal>
+                        <a class="gallery__link skeleton" href="galeria.html">
+                            <img src="../imagens/galeria-horta.svg" alt="" width="800" height="600" loading="lazy">
+                            <span class="gallery__overlay"><span class="gallery__title">Mutirão na horta</span><span class="gallery__meta">Março de 2026</span></span>
+                        </a>
+                    </li>
+                    <li class="gallery__item" data-reveal>
+                        <a class="gallery__link skeleton" href="galeria.html">
+                            <img src="../imagens/projeto-educacao-digital.svg" alt="" width="800" height="500" loading="lazy">
+                            <span class="gallery__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5Z"/></svg></span>
+                            <span class="gallery__overlay"><span class="gallery__title">Bastidores da oficina</span><span class="gallery__meta">Vídeo</span></span>
+                        </a>
+                    </li>
+                    <li class="gallery__item" data-reveal>
+                        <a class="gallery__link skeleton" href="galeria.html">
+                            <img src="../imagens/galeria-arte.svg" alt="" width="800" height="600" loading="lazy">
+                            <span class="gallery__overlay"><span class="gallery__title">Oficina de arte</span><span class="gallery__meta">Abril de 2026</span></span>
+                        </a>
+                    </li>
+                    <li class="gallery__item" data-reveal>
+                        <a class="gallery__link skeleton" href="galeria.html">
+                            <img src="../imagens/projeto-alimentacao.svg" alt="" width="800" height="500" loading="lazy">
+                            <span class="gallery__overlay"><span class="gallery__title">Distribuição de cestas</span><span class="gallery__meta">Alimentação Solidária</span></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section section--muted" id="como-ajudar" aria-labelledby="como-ajudar-titulo">
             <div class="container">
                 <div class="section__header section__header--center" data-reveal>
                     <span class="eyebrow">Participe</span>
@@ -242,10 +290,10 @@
             <div class="social" data-reveal>
                 <p>Siga-nos nas redes sociais e acompanhe nossas ações em tempo real.</p>
                 <!-- Substitua "#" pelos endereços reais dos perfis -->
-                <ul class="cluster" role="list">
-                    <li><a class="btn btn--sm" href="#">Instagram</a></li>
-                    <li><a class="btn btn--sm" href="#">Facebook</a></li>
-                    <li><a class="btn btn--sm" href="#">YouTube</a></li>
+                <ul class="social__list" role="list">
+                    <li><a class="social__link" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a></li>
+                    <li><a class="social__link" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></li>
+                    <li><a class="social__link" href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 17a24 24 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24 24 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a></li>
                 </ul>
             </div>
         </div>
@@ -266,6 +314,7 @@
                     <ul role="list">
                         <li><a href="index.html">Início</a></li>
                         <li><a href="projetos.html">Projetos Sociais</a></li>
+                        <li><a href="galeria.html">Galeria</a></li>
                         <li><a href="contato.html">Contato</a></li>
                     </ul>
                 </nav>
@@ -340,6 +389,7 @@
     <script src="../js/modules/images.js" defer></script>
     <script src="../js/modules/toast.js" defer></script>
     <script src="../js/modules/dialog.js" defer></script>
+    <script src="../js/modules/lightbox.js" defer></script>
     <script src="../js/modules/filter.js" defer></script>
     <script src="../js/modules/form.js" defer></script>
     <script src="../js/scripts.js" defer></script>

@@ -24,7 +24,7 @@
         scrim.setAttribute('aria-hidden', 'true');
         document.body.append(scrim);
 
-        const mq = window.matchMedia('(max-width: 52rem)');
+        const mq = window.matchMedia('(max-width: 60rem)');
         const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
 
         /** @param {boolean} open */
@@ -38,13 +38,17 @@
         };
 
         toggle.addEventListener('click', () => setOpen(!isOpen()));
+        // Escolher um destino (link ou "Quero ajudar") fecha a gaveta
+        list.addEventListener('click', (e) => {
+            if (isOpen() && /** @type {HTMLElement} */ (e.target).closest('a, button')) setOpen(false);
+        });
         scrim.addEventListener('click', () => setOpen(false));
 
         document.addEventListener('keydown', (e) => {
             if (!isOpen()) return;
             if (e.key === 'Escape') { setOpen(false); toggle.focus(); return; }
             if (e.key === 'Tab') {
-                const focusables = [toggle, ...$$('a', list)];
+                const focusables = [toggle, ...$$('a, button', list)];
                 const first = focusables[0];
                 const last = focusables[focusables.length - 1];
                 if (e.shiftKey && document.activeElement === first) { e.preventDefault(); /** @type {HTMLElement} */ (last).focus(); }

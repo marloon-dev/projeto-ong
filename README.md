@@ -1,6 +1,6 @@
 # ONG Vidas em Ação — Site institucional
 
-![versão](https://img.shields.io/badge/versão-1.1.0-0b8a51)
+![versão](https://img.shields.io/badge/versão-1.2.0-0b8a51)
 [![Site](https://img.shields.io/badge/site-GitHub%20Pages-0e9f8e)](https://marloon-dev.github.io/projeto-ong/)
 [![CI](https://github.com/marloon-dev/projeto-ong/actions/workflows/ci.yml/badge.svg)](https://github.com/marloon-dev/projeto-ong/actions/workflows/ci.yml)
 ![stack](https://img.shields.io/badge/stack-HTML%20·%20CSS%20·%20JS-0e9f8e)

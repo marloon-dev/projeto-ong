@@ -8,6 +8,8 @@ seguem os [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-10-01
+
 ### Adicionado
 - Publicação no GitHub Pages: `index.html` na raiz redireciona para `html/index.html` e `.nojekyll` desliga o Jekyll.
 
@@ -84,6 +86,7 @@ seguem os [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.
 ### Adicionado
 - Estrutura inicial do site: páginas Início, Projetos Sociais e Contato em HTML semântico.
 
-[Unreleased]: https://github.com/marloon-dev/projeto-ong/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/marloon-dev/projeto-ong/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/marloon-dev/projeto-ong/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/marloon-dev/projeto-ong/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/marloon-dev/projeto-ong/releases/tag/v1.0.0

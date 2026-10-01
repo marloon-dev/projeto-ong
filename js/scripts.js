@@ -11,7 +11,7 @@
 (function (VEA) {
     'use strict';
 
-    const MODULES = ['theme', 'header', 'nav', 'reveal', 'counter', 'cardGlow', 'images', 'filter', 'dialog', 'form'];
+    const MODULES = ['theme', 'header', 'nav', 'reveal', 'counter', 'cardGlow', 'images', 'filter', 'dialog', 'lightbox', 'form'];
 
     const boot = () => {
         MODULES.forEach((name) => {

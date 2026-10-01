@@ -117,8 +117,11 @@
 .nav__toggle[aria-expanded="true"] .nav__burger::before { transform: rotate(45deg); }
 .nav__toggle[aria-expanded="true"] .nav__burger::after  { transform: rotate(-45deg); }
 
+/* CTA dentro da gaveta: só existe no mobile (no desktop está no cabeçalho) */
+.nav__cta { display: none; }
+
 /* ---------- Mobile: gaveta animada ---------- */
-@media (max-width: 52rem) {
+@media (max-width: 60rem) {
     .nav { order: 3; }
     .nav__toggle { display: grid; }
 
@@ -164,13 +167,33 @@
     .nav__link[aria-current="page"] { background: var(--color-primary-soft); }
     .nav__link[aria-current="page"]::after { display: none; }
 
+    .nav__cta { display: block; margin-top: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--color-border); }
+    .nav__cta .btn { width: 100%; }
 }
 
-/* Véu por trás da gaveta */
+/* ---------- Barra de progresso de leitura ---------- */
+.scroll-progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    background: var(--gradient-text);
+    transform-origin: 0 50%;
+    transform: scaleX(var(--progress, 0));
+    opacity: 0;
+    transition: opacity var(--dur-base) var(--ease-out);
+    pointer-events: none;
+}
+.site-header[data-scrolled="true"] .scroll-progress { opacity: 1; }
+
+/* Véu por trás da gaveta.
+   O cabeçalho (sticky + z-index) cria um contexto de empilhamento que
+   contém a gaveta; o véu tem de ficar abaixo dele, senão tapa os links. */
 .nav-scrim {
     position: fixed;
     inset: var(--header-h) 0 0 0;
-    z-index: calc(var(--z-drawer) - 1);
+    z-index: calc(var(--z-header) - 1);
     background: rgb(4 14 9 / 0.45);
     opacity: 0;
     pointer-events: none;

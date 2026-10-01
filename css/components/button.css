@@ -131,6 +131,6 @@
 
 /* CTA do cabeçalho: escondido em ecrãs estreitos (fica no menu/modal).
    Vive na camada components para prevalecer sobre .btn { display } */
-@media (max-width: 52rem) {
+@media (max-width: 60rem) {
     .site-header__cta { display: none; }
 }

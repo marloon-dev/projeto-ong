@@ -8,6 +8,9 @@ seguem os [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.
 
 ## [Unreleased]
 
+### Adicionado
+- Publicação no GitHub Pages: `index.html` na raiz redireciona para `html/index.html` e `.nojekyll` desliga o Jekyll.
+
 ## [1.1.0] - 2026-10-01
 
 ### Adicionado
